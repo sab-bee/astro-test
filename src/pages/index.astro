@@ -12,5 +12,75 @@ const story = data.story;
 ---
 
 <Base title="Home">
-  <StoryblokComponent blok={story.content} />
+  <div>
+    <StoryblokComponent blok={story.content} />
+  </div>
+  <div class="container cursor-pointer">
+    <div class="card" id="card-u">
+      <h2>This is title</h2>
+      <div class="details">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quae quaerat enim
+          fugiat aliquid voluptate, reiciendis accusamus quia quas aperiam ex voluptas hic odit,
+          temporibus saepe non sunt. Fugiat fuga recusandae aspernatur beatae asperiores distinctio
+          animi consequuntur cum dignissimos tenetur?
+        </p>
+        <button class="cta">confirm</button>
+      </div>
+    </div>
+  </div>
 </Base>
+
+<style>
+  .container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  .card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 2rem;
+    transform: translate(-50%, -50%);
+    transition: 0.2s ease-out;
+  }
+
+  .card h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .card .details {
+    margin-top: 1rem;
+  }
+
+  .card .cta {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #000;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .move {
+    transform: translate(-40%, -50%);
+  }
+</style>
+
+<script>
+  const card = document.getElementById('card-u')
+  card.addEventListener("mouseover", () => {
+    console.log('hello')
+    card.classList.add("move");
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.classList.remove("move");
+  });
+</script>
