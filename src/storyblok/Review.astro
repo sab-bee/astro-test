@@ -1,6 +1,8 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import Card from "../components/Card.astro";
+import Token from "../components/Token";
 
 const { blok } = Astro.props;
 ---
@@ -11,20 +13,8 @@ const { blok } = Astro.props;
     <p class="lg:border border-black py-1 lg:px-2 rounded-full m-0">{blok.headline}</p>
   </div>
   <div class="flex flex-col lg:flex-row items-center justify-around py-20 ">
-    <div class="container cursor-pointer">
-      <div class="carda" id="card-u">
-        <h2>This is title</h2>
-        <div class="details">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quae quaerat enim
-            fugiat aliquid voluptate, reiciendis accusamus quia quas aperiam ex voluptas hic odit,
-            temporibus saepe non sunt. Fugiat fuga recusandae aspernatur beatae asperiores distinctio
-            animi consequuntur cum dignissimos tenetur?
-          </p>
-          <button class="cta">confirm</button>
-        </div>
-      </div>
-    </div>
+    <Card></Card>
+    <Token client:load></Token>
 
     <div class="flex flex-col overflow-hidden">
       {
@@ -37,57 +27,3 @@ const { blok } = Astro.props;
 </section>
 
 
-<style>
-    /* ---------------- */
-    .container {
-    height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-  .carda {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    height: 300px;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 2rem;
-    transform: translate(-50%, -50%);
-    transition: 0.2s ease-out;
-  }
-
-  .carda h2 {
-    font-size: 1.4rem;
-    font-weight: 500;
-  }
-
-  .carda .details {
-    margin-top: 1rem;
-  }
-
-  .carda .cta {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #000;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .move {
-    transform: translate(-40%, -50%);
-  }
-</style>
-
-<script>
-    const carda = document.getElementById('card-u')
-  carda.addEventListener("mouseover", () => {
-    console.log('hello')
-    carda.classList.add("move");
-  });
-
-  carda.addEventListener("mouseleave", () => {
-    carda.classList.remove("move");
-  });
-</script>
